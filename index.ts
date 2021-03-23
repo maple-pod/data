@@ -173,7 +173,7 @@ function mergeBgmData(
   const spinner = ora('Start to build data repo...').start()
   await rm(DIST_DIR_PATH)
   await mkdir(DIST_DIR_PATH)
-  const { data: bgmList }: { data: string[] } = await axios.get('https://maple-pod.github.io/bgm/list.json')
+  const { data: { doneIds: bgmList } }: { data: { doneIds: string[] } } = await axios.get('https://maple-pod.github.io/bgm/build.json')
   const { data: bgmData }: { data: MapleBgmData[] } = await axios.get('https://raw.githubusercontent.com/maplestory-music/maplebgm-db/prod/bgm.min.json')
   const mapBgmMapping = await getMapBgmMapping()
   const mapStringMapping = await getMapStringMapping()
